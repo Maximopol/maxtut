@@ -22,4 +22,7 @@ public class PositionService {
         }
         
     }
+    public Position findPositionById(Integer id){
+        return positionRepository.findPositionById(id);
+    }
 }

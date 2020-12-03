@@ -1,7 +1,6 @@
 package com.maximopol.maxtut.service;
 
-import com.maximopol.maxtut.entity.Employmen;
-import com.maximopol.maxtut.entity.Position;
+import com.maximopol.maxtut.entity.Employment;
 import com.maximopol.maxtut.repository.EmploymenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +13,14 @@ public class EmploymenService {
     private EmploymenRepository employmenRepository;
 
     public void printAllEmploymen(){
-        List<Employmen> list= employmenRepository.findAll();
+        List<Employment> list= employmenRepository.findAll();
 
-        for (Employmen employmen:list
+        for (Employment employment :list
         ) {
-            System.out.println(employmen);
+            System.out.println(employment);
         }
+    }
+    public Employment findEmploymenById(Integer id){
+        return employmenRepository.findEmploymenById(id);
     }
 }

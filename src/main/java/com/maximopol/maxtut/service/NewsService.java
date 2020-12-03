@@ -22,4 +22,7 @@ public class NewsService {
         }
 
     }
+    public News findNewsById(Long id){
+        return newsRepository.findNewsById(id);
+    }
 }

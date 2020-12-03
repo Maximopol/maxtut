@@ -23,4 +23,8 @@ public class CommentService {
         }
 
     }
+
+    public Comment findCommentById(Long id){
+        return commentRepository.findCommentById(id);
+    }
 }

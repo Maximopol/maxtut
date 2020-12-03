@@ -1,8 +1,10 @@
 package com.maximopol.maxtut.controller;
 
+import com.maximopol.maxtut.entity.User;
 import com.maximopol.maxtut.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,7 +29,7 @@ public class KekController {
     private UserService userService;
 
     @RequestMapping(value="/kek",method = RequestMethod.GET)
-    public String viewKek() {
+    public String viewKek(Model map) {
 
         positionService.printAllPosition();
         System.out.println("\n");
@@ -40,9 +42,10 @@ public class KekController {
         newsService.printAllPosition();
         System.out.println("\n");
         userService.printAllUser();
+User user =userService.findUserById(1L);
+        map.addAttribute("kekek",user);
+        //int i=1/0;
 
-        int i=1/0;
-        
         return "kek";
     }
 }

@@ -22,6 +22,9 @@ public class Comment {
     @Column(name = "Date")
     private String date;
 
+    @Transient
+    private User user;
+
     public Comment(){
 
     }
@@ -66,6 +69,14 @@ public class Comment {
         this.date = date;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
@@ -74,6 +85,34 @@ public class Comment {
                 ", user_Id=" + user_Id +
                 ", text='" + text + '\'' +
                 ", date='" + date + '\'' +
+                ", user=" + user +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Comment)) return false;
+
+        Comment comment = (Comment) o;
+
+        if (getId() != null ? !getId().equals(comment.getId()) : comment.getId() != null) return false;
+        if (getNews() != null ? !getNews().equals(comment.getNews()) : comment.getNews() != null) return false;
+        if (getUser_Id() != null ? !getUser_Id().equals(comment.getUser_Id()) : comment.getUser_Id() != null)
+            return false;
+        if (getText() != null ? !getText().equals(comment.getText()) : comment.getText() != null) return false;
+        if (getDate() != null ? !getDate().equals(comment.getDate()) : comment.getDate() != null) return false;
+        return getUser() != null ? getUser().equals(comment.getUser()) : comment.getUser() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getNews() != null ? getNews().hashCode() : 0);
+        result = 31 * result + (getUser_Id() != null ? getUser_Id().hashCode() : 0);
+        result = 31 * result + (getText() != null ? getText().hashCode() : 0);
+        result = 31 * result + (getDate() != null ? getDate().hashCode() : 0);
+        result = 31 * result + (getUser() != null ? getUser().hashCode() : 0);
+        return result;
     }
 }

@@ -22,4 +22,7 @@ public class FileNewsService {
         }
 
     }
+    public FileNews findFileNewsById(Long id){
+        return fileNewsRepository.findPositionById(id);
+    }
 }

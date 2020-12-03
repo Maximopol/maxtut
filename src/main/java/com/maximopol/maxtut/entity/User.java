@@ -7,16 +7,22 @@ import javax.persistence.*;
 public class User {
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "Email")
     private String email;
+
     @Column(name = "Password")
     private String username;
+
     @Column(name = "Username")
     private String password;
 
-    public User(){
+    @Transient
+    private String confirmPassword;
+
+    public User() {
 
     }
 
@@ -60,5 +66,33 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (getId() != null ? !getId().equals(user.getId()) : user.getId() != null) return false;
+        if (getEmail() != null ? !getEmail().equals(user.getEmail()) : user.getEmail() != null) return false;
+        return getUsername() != null ? getUsername().equals(user.getUsername()) : user.getUsername() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
+        result = 31 * result + (getUsername() != null ? getUsername().hashCode() : 0);
+        return result;
     }
 }
