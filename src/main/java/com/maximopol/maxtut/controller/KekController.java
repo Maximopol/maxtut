@@ -22,6 +22,7 @@ public class KekController {
 
     @Autowired
     private NewsService newsService;
+
     @Autowired
     private UserService userService;
 
@@ -39,6 +40,9 @@ public class KekController {
         newsService.printAllPosition();
         System.out.println("\n");
         userService.printAllUser();
+
+        int i=1/0;
+        
         return "kek";
     }
 }
