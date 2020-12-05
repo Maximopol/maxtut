@@ -13,8 +13,8 @@ public class Comment {
     @Column(name = "News")
     private Long news;
 
-    @Column(name = "User_ID")
-    private Long user_Id;
+    @Column(name = "Person")
+    private Long person;
 
     @Column(name = "Text")
     private String text;
@@ -23,11 +23,12 @@ public class Comment {
     private String date;
 
     @Transient
-    private User user;
+    private User me;
 
     public Comment(){
 
     }
+
 
     public Long getId() {
         return id;
@@ -45,12 +46,12 @@ public class Comment {
         this.news = news;
     }
 
-    public Long getUser_Id() {
-        return user_Id;
+    public Long getPerson() {
+        return person;
     }
 
-    public void setUser_Id(Long user_Id) {
-        this.user_Id = user_Id;
+    public void setPerson(Long person) {
+        this.person = person;
     }
 
     public String getText() {
@@ -69,12 +70,12 @@ public class Comment {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
+    public User getMe() {
+        return me;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setMe(User me) {
+        this.me = me;
     }
 
     @Override
@@ -82,10 +83,10 @@ public class Comment {
         return "Comment{" +
                 "id=" + id +
                 ", news=" + news +
-                ", user_Id=" + user_Id +
+                ", person=" + person +
                 ", text='" + text + '\'' +
                 ", date='" + date + '\'' +
-                ", user=" + user +
+                ", me=" + me +
                 '}';
     }
 
@@ -98,21 +99,20 @@ public class Comment {
 
         if (getId() != null ? !getId().equals(comment.getId()) : comment.getId() != null) return false;
         if (getNews() != null ? !getNews().equals(comment.getNews()) : comment.getNews() != null) return false;
-        if (getUser_Id() != null ? !getUser_Id().equals(comment.getUser_Id()) : comment.getUser_Id() != null)
-            return false;
+        if (getPerson() != null ? !getPerson().equals(comment.getPerson()) : comment.getPerson() != null) return false;
         if (getText() != null ? !getText().equals(comment.getText()) : comment.getText() != null) return false;
         if (getDate() != null ? !getDate().equals(comment.getDate()) : comment.getDate() != null) return false;
-        return getUser() != null ? getUser().equals(comment.getUser()) : comment.getUser() == null;
+        return getMe() != null ? getMe().equals(comment.getMe()) : comment.getMe() == null;
     }
 
     @Override
     public int hashCode() {
         int result = getId() != null ? getId().hashCode() : 0;
         result = 31 * result + (getNews() != null ? getNews().hashCode() : 0);
-        result = 31 * result + (getUser_Id() != null ? getUser_Id().hashCode() : 0);
+        result = 31 * result + (getPerson() != null ? getPerson().hashCode() : 0);
         result = 31 * result + (getText() != null ? getText().hashCode() : 0);
         result = 31 * result + (getDate() != null ? getDate().hashCode() : 0);
-        result = 31 * result + (getUser() != null ? getUser().hashCode() : 0);
+        result = 31 * result + (getMe() != null ? getMe().hashCode() : 0);
         return result;
     }
 }

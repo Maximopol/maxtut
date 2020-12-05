@@ -3,15 +3,15 @@ package com.maximopol.maxtut.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "File_News")
-public class FileNews {
+@Table(name = "Filek")
+public class Filek {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "File_Name")
-    private String file_Name;
+    @Column(name = "Name")
+    private String name;
 
     @Column(name = "Title")
     private String title;
@@ -19,19 +19,19 @@ public class FileNews {
     @Column(name = "Text")
     private String text;
 
-    public FileNews() {
+    public Filek() {
 
     }
 
-    public FileNews(Long id, String file_Name, String title, String text) {
-        this.file_Name = file_Name;
+    public Filek(Long id, String name, String title, String text) {
+        this.name = name;
         this.id = id;
         this.title = title;
         this.text = text;
     }
 
-    public FileNews(FileNews fileNews) {
-        this(fileNews.id, fileNews.file_Name, fileNews.title, fileNews.text);
+    public Filek(Filek filek) {
+        this(filek.id, filek.name, filek.title, filek.text);
     }
 
 
@@ -43,12 +43,12 @@ public class FileNews {
         this.id = id;
     }
 
-    public String getFileName() {
-        return file_Name;
+    public String getName() {
+        return name;
     }
 
-    public void setFileName(String fileName) {
-        this.file_Name = fileName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTitle() {
@@ -69,9 +69,9 @@ public class FileNews {
 
     @Override
     public String toString() {
-        return "FileNews{" +
+        return "File{" +
                 "id=" + id +
-                ", fileName='" + file_Name + '\'' +
+                ", name='" + name + '\'' +
                 ", title='" + title + '\'' +
                 ", text='" + text + '\'' +
                 '}';
@@ -80,21 +80,20 @@ public class FileNews {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof FileNews)) return false;
+        if (!(o instanceof Filek)) return false;
 
-        FileNews fileNews = (FileNews) o;
+        Filek filek = (Filek) o;
 
-        if (getId() != null ? !getId().equals(fileNews.getId()) : fileNews.getId() != null) return false;
-        if (getFileName() != null ? !getFileName().equals(fileNews.getFileName()) : fileNews.getFileName() != null)
-            return false;
-        if (getTitle() != null ? !getTitle().equals(fileNews.getTitle()) : fileNews.getTitle() != null) return false;
-        return getText() != null ? getText().equals(fileNews.getText()) : fileNews.getText() == null;
+        if (getId() != null ? !getId().equals(filek.getId()) : filek.getId() != null) return false;
+        if (getName() != null ? !getName().equals(filek.getName()) : filek.getName() != null) return false;
+        if (getTitle() != null ? !getTitle().equals(filek.getTitle()) : filek.getTitle() != null) return false;
+        return getText() != null ? getText().equals(filek.getText()) : filek.getText() == null;
     }
 
     @Override
     public int hashCode() {
         int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getFileName() != null ? getFileName().hashCode() : 0);
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
         result = 31 * result + (getTitle() != null ? getTitle().hashCode() : 0);
         result = 31 * result + (getText() != null ? getText().hashCode() : 0);
         return result;

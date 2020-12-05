@@ -10,4 +10,8 @@ public interface UserRepository extends JpaRepository<User,Long> {
     @Override
     List<User> findAll();
     User findUserById(Long id);
+    User findUserByEmail(String email);
+    User findUserByUsername(String username);
+    User findUserByEmailOrUsername(String email, String username);
+    void deleteByEmail(String email);
 }

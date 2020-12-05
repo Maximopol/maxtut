@@ -17,10 +17,10 @@ public class KekController {
     private CommentService commentService;
 
     @Autowired
-    private EmploymenService employmenService;
+    private EmploymentService employmentService;
 
     @Autowired
-    private FileNewsService fileNewsService;
+    private FilekService filekService;
 
     @Autowired
     private NewsService newsService;
@@ -28,22 +28,24 @@ public class KekController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value="/kek",method = RequestMethod.GET)
+    @RequestMapping(value = "/kek", method = RequestMethod.GET)
     public String viewKek(Model map) {
 
         positionService.printAllPosition();
         System.out.println("\n");
         commentService.printAllComment();
         System.out.println("\n");
-        employmenService.printAllEmploymen();
+        employmentService.printAllEmployments();
         System.out.println("\n");
-        fileNewsService.printAllFileNews();
+        filekService.printAllFilek();
         System.out.println("\n");
         newsService.printAllPosition();
         System.out.println("\n");
         userService.printAllUser();
-User user =userService.findUserById(1L);
-        map.addAttribute("kekek",user);
+
+        User user = userService.findUserById(1L);
+
+        map.addAttribute("kekek", user);
         //int i=1/0;
 
         return "kek";

@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PositionRepository extends JpaRepository<Position, Integer> {
     Position findPositionById(Integer id);
-
+    Position findPositionByDescription(String description);
     @Override
     List<Position> findAll();
 }

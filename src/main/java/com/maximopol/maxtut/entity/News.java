@@ -16,21 +16,22 @@ public class News {
     @Column(name = "Date")
     private String date;
 
-    @Column(name = "ID_Author")
-    private Long id_Author;
+    @Column(name = "Author")
+    private Long author;
 
-    @Column(name = "ID_File")
-    private Long id_File;
+    @Column(name = "Filek")
+    private Long filek;
 
     @Transient
     private Employment employment;
 
     @Transient
-    private FileNews fileNews;
+    private Filek myFilek;
 
     public News(){
 
     }
+
 
     public Long getId() {
         return id;
@@ -56,20 +57,20 @@ public class News {
         this.date = date;
     }
 
-    public Long getId_Author() {
-        return id_Author;
+    public Long getAuthor() {
+        return author;
     }
 
-    public void setId_Author(Long id_Author) {
-        this.id_Author = id_Author;
+    public void setAuthor(Long author) {
+        this.author = author;
     }
 
-    public Long getId_File() {
-        return id_File;
+    public Long getFilek() {
+        return filek;
     }
 
-    public void setId_File(Long id_File) {
-        this.id_File = id_File;
+    public void setFilek(Long file) {
+        this.filek = file;
     }
 
     public Employment getEmployment() {
@@ -80,12 +81,12 @@ public class News {
         this.employment = employment;
     }
 
-    public FileNews getFileNews() {
-        return fileNews;
+    public Filek getMyFile() {
+        return myFilek;
     }
 
-    public void setFileNews(FileNews fileNews) {
-        this.fileNews = fileNews;
+    public void setMyFile(Filek myFilek) {
+        this.myFilek = myFilek;
     }
 
     @Override
@@ -94,10 +95,10 @@ public class News {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", date='" + date + '\'' +
-                ", id_Author=" + id_Author +
-                ", id_File=" + id_File +
+                ", author=" + author +
+                ", file=" + filek +
                 ", employment=" + employment +
-                ", fileNews=" + fileNews +
+                ", myFile=" + myFilek +
                 '}';
     }
 
@@ -111,12 +112,11 @@ public class News {
         if (getId() != null ? !getId().equals(news.getId()) : news.getId() != null) return false;
         if (getTitle() != null ? !getTitle().equals(news.getTitle()) : news.getTitle() != null) return false;
         if (getDate() != null ? !getDate().equals(news.getDate()) : news.getDate() != null) return false;
-        if (getId_Author() != null ? !getId_Author().equals(news.getId_Author()) : news.getId_Author() != null)
-            return false;
-        if (getId_File() != null ? !getId_File().equals(news.getId_File()) : news.getId_File() != null) return false;
+        if (getAuthor() != null ? !getAuthor().equals(news.getAuthor()) : news.getAuthor() != null) return false;
+        if (getFilek() != null ? !getFilek().equals(news.getFilek()) : news.getFilek() != null) return false;
         if (getEmployment() != null ? !getEmployment().equals(news.getEmployment()) : news.getEmployment() != null)
             return false;
-        return getFileNews() != null ? getFileNews().equals(news.getFileNews()) : news.getFileNews() == null;
+        return getMyFile() != null ? getMyFile().equals(news.getMyFile()) : news.getMyFile() == null;
     }
 
     @Override
@@ -124,10 +124,10 @@ public class News {
         int result = getId() != null ? getId().hashCode() : 0;
         result = 31 * result + (getTitle() != null ? getTitle().hashCode() : 0);
         result = 31 * result + (getDate() != null ? getDate().hashCode() : 0);
-        result = 31 * result + (getId_Author() != null ? getId_Author().hashCode() : 0);
-        result = 31 * result + (getId_File() != null ? getId_File().hashCode() : 0);
+        result = 31 * result + (getAuthor() != null ? getAuthor().hashCode() : 0);
+        result = 31 * result + (getFilek() != null ? getFilek().hashCode() : 0);
         result = 31 * result + (getEmployment() != null ? getEmployment().hashCode() : 0);
-        result = 31 * result + (getFileNews() != null ? getFileNews().hashCode() : 0);
+        result = 31 * result + (getMyFile() != null ? getMyFile().hashCode() : 0);
         return result;
     }
 }

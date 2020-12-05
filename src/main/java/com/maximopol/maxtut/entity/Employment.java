@@ -3,30 +3,30 @@ package com.maximopol.maxtut.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Employmens")
+@Table(name = "Employments")
 public class Employment {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "ID_User")
-    private Long id_User;
+    @Column(name = "Person")
+    private Long person;
 
-    @Column(name = "ID_Position")
-    private Long id_Position;
+    @Column(name = "Position")
+    private Integer position;
 
-    @Column(name = "ID_Contract")
-    private Long id_Contract;
+    @Column(name = "Contract")
+    private Long contract;
 
-    @Column(name = "phone")
+    @Column(name = "Phone")
     private String phone;
 
     @Transient
     private User user;
 
     @Transient
-    private Position position;
+    private Position myPosition;
 
     public Employment() {
 
@@ -41,28 +41,28 @@ public class Employment {
         this.id = id;
     }
 
-    public Long getId_User() {
-        return id_User;
+    public Long getPerson() {
+        return person;
     }
 
-    public void setId_User(Long id_User) {
-        this.id_User = id_User;
+    public void setPerson(Long person) {
+        this.person = person;
     }
 
-    public Long getId_Position() {
-        return id_Position;
+    public Integer getPosition() {
+        return position;
     }
 
-    public void setId_Position(Long id_Position) {
-        this.id_Position = id_Position;
+    public void setPosition(Integer position) {
+        this.position = position;
     }
 
-    public Long getId_Contract() {
-        return id_Contract;
+    public Long getContract() {
+        return contract;
     }
 
-    public void setId_Contract(Long id_Contract) {
-        this.id_Contract = id_Contract;
+    public void setContract(Long contract) {
+        this.contract = contract;
     }
 
     public String getPhone() {
@@ -81,24 +81,24 @@ public class Employment {
         this.user = user;
     }
 
-    public Position getPosition() {
-        return position;
+    public Position getMyPosition() {
+        return myPosition;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
+    public void setMyPosition(Position myPosition) {
+        this.myPosition = myPosition;
     }
 
     @Override
     public String toString() {
         return "Employment{" +
                 "id=" + id +
-                ", id_User=" + id_User +
-                ", id_Position=" + id_Position +
-                ", id_Contract=" + id_Contract +
+                ", person=" + person +
+                ", position=" + position +
+                ", contract=" + contract +
                 ", phone='" + phone + '\'' +
                 ", user=" + user +
-                ", position=" + position +
+                ", myPosition=" + myPosition +
                 '}';
     }
 
@@ -110,25 +110,25 @@ public class Employment {
         Employment that = (Employment) o;
 
         if (getId() != null ? !getId().equals(that.getId()) : that.getId() != null) return false;
-        if (getId_User() != null ? !getId_User().equals(that.getId_User()) : that.getId_User() != null) return false;
-        if (getId_Position() != null ? !getId_Position().equals(that.getId_Position()) : that.getId_Position() != null)
+        if (getPerson() != null ? !getPerson().equals(that.getPerson()) : that.getPerson() != null) return false;
+        if (getPosition() != null ? !getPosition().equals(that.getPosition()) : that.getPosition() != null)
             return false;
-        if (getId_Contract() != null ? !getId_Contract().equals(that.getId_Contract()) : that.getId_Contract() != null)
+        if (getContract() != null ? !getContract().equals(that.getContract()) : that.getContract() != null)
             return false;
         if (getPhone() != null ? !getPhone().equals(that.getPhone()) : that.getPhone() != null) return false;
         if (getUser() != null ? !getUser().equals(that.getUser()) : that.getUser() != null) return false;
-        return getPosition() != null ? getPosition().equals(that.getPosition()) : that.getPosition() == null;
+        return getMyPosition() != null ? getMyPosition().equals(that.getMyPosition()) : that.getMyPosition() == null;
     }
 
     @Override
     public int hashCode() {
         int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getId_User() != null ? getId_User().hashCode() : 0);
-        result = 31 * result + (getId_Position() != null ? getId_Position().hashCode() : 0);
-        result = 31 * result + (getId_Contract() != null ? getId_Contract().hashCode() : 0);
+        result = 31 * result + (getPerson() != null ? getPerson().hashCode() : 0);
+        result = 31 * result + (getPosition() != null ? getPosition().hashCode() : 0);
+        result = 31 * result + (getContract() != null ? getContract().hashCode() : 0);
         result = 31 * result + (getPhone() != null ? getPhone().hashCode() : 0);
         result = 31 * result + (getUser() != null ? getUser().hashCode() : 0);
-        result = 31 * result + (getPosition() != null ? getPosition().hashCode() : 0);
+        result = 31 * result + (getMyPosition() != null ? getMyPosition().hashCode() : 0);
         return result;
     }
 }
