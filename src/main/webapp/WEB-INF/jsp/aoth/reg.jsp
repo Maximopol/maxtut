@@ -34,9 +34,9 @@
                 <input class="" type="password" name="passwordConfirm" placeholder="Confirm the password" th:field="*{passwordConfirm}" />
             </div>
 
-            <div>
-                ${Error}
-            </div>
+<%--            <div>--%>
+<%--                ${Error}--%>
+<%--            </div>--%>
 
             <div>
                 <button class="">
