@@ -1,20 +1,15 @@
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: maxim
-  Date: 03.12.2020
-  Time: 16:27
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/aoth/aoth.css">
 </head>
 <body>
 <div class="">
     <div class="">
-        Account creation
+        Sing in
         <form class="" method="post">
             <div class="">
                 <input class="" type="text" name="email" placeholder="Email" th:field="*{email}" />
@@ -30,13 +25,13 @@
 
             <div>
                 <button class="">
-                    Create
+                    Login
                 </button>
             </div>
 
             <div>
                 <a class="" href="${pageContext.request.contextPath}/registration">
-                    Login
+                    Create a account
                 </a>
             </div>
 

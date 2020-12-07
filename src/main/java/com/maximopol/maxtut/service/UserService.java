@@ -28,11 +28,24 @@ public class UserService {
         return userRepository.findUserById(id);
     }
 
+    public User findUserByEmail(String email){
+        return userRepository.findUserByEmail(email);
+    }
+    public User findUserByEmailOrUsername(String email, String username){
+        return userRepository.findUserByEmailOrUsername(email, username);
+    }
+
     public boolean saveUser(User user) {
         boolean status = false;
         User user1 = userRepository.findUserByEmailOrUsername(user.getEmail(), user.getUsername());
-
-        if (user1 != null) {
+        System.out.println("==========================");
+        System.out.println(user);
+        System.out.println(user.getConfirmPassword());
+        System.out.println("==========================");
+        System.out.println(user1);
+        System.out.println(user.getConfirmPassword());
+        System.out.println("==========================");
+        if (user1 == null) {
             userRepository.save(user);
             status = true;
         }

@@ -21,10 +21,6 @@ public class SingUpController {
         return "aoth/reg";
 
 
-//        model.addAttribute("userForm", new Client());
-//
-//        logger.info("Someone opened the registration page");
-//        return "public/reg2";
     }
 
     @RequestMapping(value="/registration",method = RequestMethod.POST)
@@ -35,6 +31,21 @@ public class SingUpController {
         }
 
         System.out.println(user);
+        System.out.println(user.getConfirmPassword());
+        User user1 =userService.findUserByEmailOrUsername(user.getEmail(),user.getUsername());
+
+        if(user1==null){
+            if(user.getPassword().equals(user.getConfirmPassword())){
+                System.out.println(userService.saveUser(user));
+            }
+            else {
+                System.out.println("Пароли не совпадают");
+            }
+        }
+        else{
+            System.out.println("Такой есть");
+        }
+
 //        if (!EmailValidator.IsValidEmail(client.getEmail())) {
 //            result = "У тебя почта странная\n";
 //        }
