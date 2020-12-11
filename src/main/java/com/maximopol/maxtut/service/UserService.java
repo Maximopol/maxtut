@@ -19,12 +19,7 @@ public class UserService {
         List<User> list = userRepository.findAll();
 
         list.sort(new UserEmailComparator());
-
-        for (User user : list
-        ) {
-            System.out.println(user);
-        }
-
+        list.forEach(System.out::println);
     }
 
     public User findUserById(Long id) {

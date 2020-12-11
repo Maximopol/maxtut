@@ -21,12 +21,8 @@ public class EmploymentService {
 
     public void printAllEmployments() {
         List<Employment> list = employmentRepository.findAll();
-//        employmentRepository.findEmploymentsByPosition(0L);
 
-        for (Employment employment : list
-        ) {
-            System.out.println(employment);
-        }
+        list.forEach(System.out::println);
     }
 
     public List<Employment> getAllAllEmployments() {

@@ -15,11 +15,7 @@ public class PositionService {
     public void printAllPosition(){
         List<Position> list= positionRepository.findAll();
 
-        for (Position position:list
-             ) {
-            System.out.println(position);
-        }
-        
+        list.forEach(System.out::println);
     }
     public Position findPositionById(Integer id){
         return positionRepository.findPositionById(id);

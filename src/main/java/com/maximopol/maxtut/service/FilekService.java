@@ -15,12 +15,7 @@ public class FilekService {
     public void printAllFilek() {
         List<Filek> list = filekRepository.findAll();
 
-        for (Filek filek : list
-        ) {
-            System.out.println(filek);
-        }
-
-
+        list.forEach(System.out::println);
     }
 
     public Filek findFilekById(Long id) {

@@ -33,7 +33,7 @@
 
     <div class="footer">
         <span class="letter">
-            Copyright &copy; MaxTut
+            Copyright &copy; MaxTuT
         </span>
     </div>
 </div>

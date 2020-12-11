@@ -16,11 +16,7 @@ public class NewsService {
     public void printAllPosition(){
         List<News> list= newsRepository.findAll();
 
-        for (News news:list
-        ) {
-            System.out.println(news);
-        }
-
+        list.forEach(System.out::println);
     }
     public News findNewsById(Long id){
         return newsRepository.findNewsById(id);

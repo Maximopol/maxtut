@@ -19,11 +19,7 @@ public class CommentService {
     public void printAllComment() {
         List<Comment> list = commentRepository.findAll();
 
-        for (Comment comment : list
-        ) {
-            System.out.println(comment);
-        }
-
+        list.forEach(System.out::println);
     }
 
     public List<Comment> getFullComments() {
