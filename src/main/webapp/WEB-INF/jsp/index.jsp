@@ -9,28 +9,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Последние новости</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Catalog</title>
+<%--    <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->--%>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <!-- https://fonts.google.com/ -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/templatemo.css">
 </head>
 <body>
 
-<div class="">
 
-    <div class="">
-
-        <div class="">
-            <c:forEach var="news" items="${news}">
-<%--                <c:out value="${comments.text}"/>--%>
-                <div class="">
-                    <a class="" href="${pageContext.request.contextPath}/news/${news.id}">
-                            ${news.title}
-                    </a>
-                </div>
-            </c:forEach>
-        </div>
-
-    </div>
-
-</div>
 
 </body>
 </html>
