@@ -1,11 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: maxim
-  Date: 03.12.2020
-  Time: 15:44
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Error</title>
@@ -34,13 +27,13 @@
 
     <div class="labelToBack">
         <span class="letter">
-            Вы можете вернутся на <a href="/">главную</a>
+            Вы можете вернутся на <a href="${pageContext.request.contextPath}/">главную</a>
         </span>
     </div>
 
     <div class="footer">
         <span class="letter">
-            Copyright &copy; WheMax
+            Copyright &copy; MaxTut
         </span>
     </div>
 </div>

@@ -51,7 +51,7 @@ public class KekController {
         map.addAttribute("kekek", user);
         System.out.println("\n");
         System.out.println(checkboxValue);
-        //int i=1/0;
+       // int i=1/0;
 
         return "kek";
     }

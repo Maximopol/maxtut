@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
-    @Autowired
-    private NewsService newsService;
+//    @Autowired
+//    private NewsService newsService;
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String getIndex(Model model){
 
-        model.addAttribute("news",newsService.findAllNews());
+       // model.addAttribute("news",newsService.findAllNews());
         return "index";
     }
 
