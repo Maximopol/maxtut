@@ -1,5 +1,6 @@
 package com.maximopol.maxtut.service;
 
+import com.maximopol.maxtut.comporator.users.UserEmailComparator;
 import com.maximopol.maxtut.entity.User;
 import com.maximopol.maxtut.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ public class UserService {
 
     public void printAllUser() {
         List<User> list = userRepository.findAll();
+
+        list.sort(new UserEmailComparator());
 
         for (User user : list
         ) {

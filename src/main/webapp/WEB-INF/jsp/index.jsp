@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: maxim
@@ -11,6 +12,25 @@
     <title>Title</title>
 </head>
 <body>
+
+<div class="">
+
+    <div class="">
+
+        <div class="">
+            <c:forEach var="news" items="${news}">
+<%--                <c:out value="${comments.text}"/>--%>
+                <div class="">
+                    <a class="" href="${pageContext.request.contextPath}/news/${news.id}">
+                            ${news.title}
+                    </a>
+                </div>
+            </c:forEach>
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 </html>

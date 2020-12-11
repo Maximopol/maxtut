@@ -25,4 +25,7 @@ public class NewsService {
     public News findNewsById(Long id){
         return newsRepository.findNewsById(id);
     }
+    public List<News> findAllNews(){
+        return newsRepository.findAll();
+    }
 }

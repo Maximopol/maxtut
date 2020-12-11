@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: maxim
@@ -11,6 +12,22 @@
     <title>Title</title>
 </head>
 <body>
+
+<div class="">
+    <div class="">
+
+
+        <div class="">
+            <c:forEach var="comments" items="${comments}">
+                <c:out value="${comments.text}"/>
+
+            </c:forEach>
+
+
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>

@@ -12,5 +12,24 @@
 </head>
 <body>
 
+<div class="">
+    <div class="">
+        <div class="">
+            ${news.title}
+
+            Создана${news.date}
+             Автор ${news.author}
+
+
+                ${news.myFile.text}
+        </div>
+
+        <div>
+            <a class="" href="${pageContext.request.contextPath}/node/${news.id}">
+                Комменты
+            </a>
+        </div>
+    </div>
+</div>
 </body>
 </html>

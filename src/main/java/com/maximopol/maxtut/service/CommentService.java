@@ -13,18 +13,46 @@ import java.util.List;
 public class CommentService {
     @Autowired
     private CommentRepository commentRepository;
+    @Autowired
+    private UserService userService;
 
-    public void printAllComment(){
-        List<Comment> list= commentRepository.findAll();
+    public void printAllComment() {
+        List<Comment> list = commentRepository.findAll();
 
-        for (Comment comment:list
+        for (Comment comment : list
         ) {
             System.out.println(comment);
         }
 
     }
 
-    public Comment findCommentById(Long id){
+    public List<Comment> getFullComments() {
+        List<Comment> commentList = commentRepository.findAll();
+        for (Comment comment : commentList
+        ) {
+            comment.setMe(userService.findUserById(comment.getPerson()));
+        }
+        return commentList;
+    }
+
+    public List<Comment> getCommentsByNews(Long news) {
+        return commentRepository.findCommentsByNews(news);
+    }
+
+    public List<Comment> getFullCommentsByNews(Long news) {
+        List<Comment> commentList = commentRepository.findCommentsByNews(news);
+        for (Comment comment : commentList
+        ) {
+            comment.setMe(userService.findUserById(comment.getPerson()));
+        }
+        return commentList;
+    }
+
+    public List<Comment> getComments() {
+        return commentRepository.findAll();
+    }
+
+    public Comment findCommentById(Long id) {
         return commentRepository.findCommentById(id);
     }
 }

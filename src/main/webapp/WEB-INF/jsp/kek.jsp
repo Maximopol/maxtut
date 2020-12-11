@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: maxim
@@ -13,5 +14,26 @@
 <body>
     Слава Украине!!!
     ${kekek}     ${kekek.email}
+    <form class="" method="post">
+        <select class="form-control" id="contact-select" name="inquiry">
+            <option value="-">Subject</option>
+            <option value="sales">Sales &amp; Marketing</option>
+            <option value="creative">Creative Design</option>
+            <option value="uiux">UI / UX</option>
+        </select>
+
+        <button class="">
+            Create
+        </button>
+    </form>
+
+
+<%--    <form:form action="controllerName" method="POST" modelAttribute="meeting">--%>
+<%--        <form:select path="country">--%>
+<%--            <form:option value="NONE" label="Select" />--%>
+<%--            <form:options items="${meetings}" />--%>
+<%--        </form:select>--%>
+<%--    </form:form>--%>
+
 </body>
 </html>

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Arrays;
 
 @Controller
 public class KekController {
@@ -29,7 +32,7 @@ public class KekController {
     private UserService userService;
 
     @RequestMapping(value = "/kek", method = RequestMethod.GET)
-    public String viewKek(Model map) {
+    public String viewKek(Model map,@RequestParam(value = "inquiry", required = false) String checkboxValue) {
 
         positionService.printAllPosition();
         System.out.println("\n");
@@ -46,6 +49,22 @@ public class KekController {
         User user = userService.findUserById(1L);
 
         map.addAttribute("kekek", user);
+        System.out.println("\n");
+        System.out.println(checkboxValue);
+        //int i=1/0;
+
+        return "kek";
+    }
+    @RequestMapping(value = "/kek", method = RequestMethod.POST)
+    public String viewKekR(Model map,@RequestParam(value = "inquiry", required = false) String checkboxValue) {
+
+
+
+        User user = userService.findUserById(1L);
+
+        map.addAttribute("kekek", user);
+        System.out.println("\n");
+        System.out.println(checkboxValue);
         //int i=1/0;
 
         return "kek";
