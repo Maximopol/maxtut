@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 public class CommentController {
     @Autowired
     private CommentService commentService;
-@Autowired
-private NewsService newsService;
+    @Autowired
+    private NewsService newsService;
 
 
     @RequestMapping(value = "/node/{comments}", method = RequestMethod.GET)
@@ -32,24 +32,48 @@ private NewsService newsService;
 
         commentList.forEach(System.out::println);
 
-        News news= newsService.findNewsById(new Long(comments));
+        News news = newsService.findNewsById(new Long(comments));
 
         System.out.println(commentList.size());
-        model.addAttribute("comments",commentList);
-        model.addAttribute("nameNews",news);
+        model.addAttribute("comments", commentList);
+        model.addAttribute("nameNews", news);
 
         return "news/comments";
     }
 
     @RequestMapping(value = "/node/{comments}", method = RequestMethod.POST, params = "addComment")
-    public String addNewComment(HttpServletRequest req, HttpServletResponse res, Model model, @PathVariable String comments){
+    public String addNewComment(HttpServletRequest req, HttpServletResponse res, Model model, @PathVariable String comments) {
+        String[] list = req.getParameterValues("w3review");
+        StringBuffer string=new StringBuffer();
 
-        System.out.println(Arrays.toString(req.getParameterValues("w3review")));
+        for(String text: list){
+            string.append(text);
+        }
+        System.out.println(string);
+        System.out.println(list.length);
 
-        return getComments(model,comments);
+        GregorianCalendar cannes = new GregorianCalendar();
+        cannes.set(Calendar.ERA, GregorianCalendar.BC);
+
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        System.out.println(formater.format(cannes.getTime()));
+
+
+        Comment comment= new Comment();
+        comment.setDate(formater.format(cannes.getTime()));
+        comment.setNews(new Long(comments));
+        comment.setText(string.toString());
+        comment.setPerson(1L);
+
+        System.out.println(comment);
+        commentService.saveComment(comment);
+
+        return getComments(model, comments);
     }
+
     @RequestMapping(value = "/node/{comments}", method = RequestMethod.POST, params = "cancel")
-    public String cancelAddNewComment(Model model, @PathVariable String comments){
-        return getComments(model,comments);
+    public String cancelAddNewComment(Model model, @PathVariable String comments) {
+        return getComments(model, comments);
     }
 }

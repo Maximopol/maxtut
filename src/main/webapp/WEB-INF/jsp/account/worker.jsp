@@ -72,11 +72,13 @@
                     <div class="row">
                         <div class="col-lg-6 mb-5 pt-3">
                             <div class="media tm-testimonial">
-                                <img class="mr-4 rounded-circle img-fluid" src="../image/testimonial-1.jpg" alt="Generic placeholder image">
+                                <img class="mr-4 rounded-circle img-fluid" src="../images/testimonial-1.jpg" alt="Generic placeholder image">
                                 <p class="media-body pt-3 tm-testimonial-text">
                                     Ваша почта: ${user.email}
-                                    <br>Вы зашли на сайт как читатель.
-                                    <br>Вы можете предлагать новости, просмотривать и комментировать их.
+                                    <br>Вы зашли на сайт как работник.
+                                    <br>Ваша должность: ${position.description}
+                                    <br>Номер контракта: ${employment.contract}
+                                    <br>Ваш телефон: ${employment.phone}
                                 </p>
                             </div>
                         </div>
@@ -85,6 +87,18 @@
 
             </main>
             <div class="row mt-5 pt-3">
+                <div class="col-xl-6 col-lg-12 mb-4">
+                    <div class="tm-bg-gray p-5 h-100">
+                        <h3 class="tm-text-primary mb-3">Ваши последние работы</h3>
+                        <c:forEach var="newsList" items="${newsList}">
+                            <p class="mb-5">
+                                <a href="${pageContext.request.contextPath}/news/${newsList.id}"  >
+                                        ${newsList.title}
+                                </a>
+                            </p>
+                        </c:forEach>
+                    </div>
+                </div>
                 <div class="col-xl-6 col-lg-12 mb-4">
                     <div class="tm-bg-gray p-5 h-100">
                         <h3 class="tm-text-primary mb-3">Ваши последние комментарии</h3>
@@ -98,6 +112,8 @@
                     </div>
                 </div>
             </div>
+
+
             <footer class="row pt-5">
                 <div class="col-12">
                     <p class="text-right">Copyright&copy;2020 MaxTuT
@@ -109,8 +125,8 @@
     </div>
 </div>
 
-<script src="../js/jquery-3.4.1.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function() {
         $('.tm-likes-box').click(function(e) {

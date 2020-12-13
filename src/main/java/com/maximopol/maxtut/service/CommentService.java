@@ -2,6 +2,7 @@ package com.maximopol.maxtut.service;
 
 import com.maximopol.maxtut.entity.Comment;
 import com.maximopol.maxtut.entity.Position;
+import com.maximopol.maxtut.entity.User;
 import com.maximopol.maxtut.repository.CommentRepository;
 import com.maximopol.maxtut.repository.PositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,18 @@ public class CommentService {
         return commentRepository.findAll();
     }
 
+    public List<Comment> getCommentsByPerson(Long person) {
+        return commentRepository.findCommentsByPerson(person);
+
+    }
+
     public Comment findCommentById(Long id) {
         return commentRepository.findCommentById(id);
+    }
+
+    public boolean saveComment(Comment comment) {
+        commentRepository.save(comment);
+
+        return true;
     }
 }

@@ -24,4 +24,8 @@ public class NewsService {
     public List<News> findAllNews(){
         return newsRepository.findAll();
     }
+    
+    public List<News> findAllNewsByAuthor(Long author){
+        return newsRepository.findNewsByAuthor(author);
+    }
 }

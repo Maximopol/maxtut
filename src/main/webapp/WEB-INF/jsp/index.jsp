@@ -5,7 +5,6 @@
     <title>Последние новости</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Catalog</title>
 <%--    <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->--%>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <!-- https://fonts.google.com/ -->
@@ -98,7 +97,7 @@
 <%--                        <c:out value="${comments.text}"/>--%>
                         <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
                             <div class="position-relative tm-thumbnail-container">
-                                <img src="../image/tn-01.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
+                                <img src="../images/tn-01.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
                                 <a href="${pageContext.request.contextPath}/news/${news.id}" class="position-absolute tm-img-overlay">
                                     <i class="fas fa-play tm-overlay-icon"></i>
                                 </a>

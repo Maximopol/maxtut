@@ -33,8 +33,7 @@ public class EmploymentService {
         List<Employment> list = employmentRepository.findAll();
 
 
-        for (Employment employment : list
-        ) {
+        for (Employment employment : list) {
             employment.setUser(userService.findUserById(employment.getPerson()));
             employment.setMyPosition(positionService.findPositionById(employment.getPosition()));
         }

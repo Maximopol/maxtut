@@ -8,45 +8,34 @@
 </head>
 <body>
 
-<div class="">
-    <div class="">
-        Account creation
-        <form class="" method="post">
+<div class="vladmaxi-top">
+    <a href="${pageContext.request.contextPath}/" target="_blank">Главная MaxTuT</a>
+    <span class="right">
+        <a href="${pageContext.request.contextPath}/login">
+                <strong>Войти</strong>
+            </a>
+        </span>
+    <div class="clr"></div>
+</div>
 
-            <div class="">
-                <input class="" type="text" name="username" placeholder="Username" th:field="*{username}" />
-            </div>
+<div id="login-form">
+    <h1>Регистрация</h1>
 
-            <div class="">
-                <input class="" type="text" name="email" placeholder="Email" th:field="*{email}" />
-            </div>
+    <fieldset>
+        <form method="post">
+            <input class="" type="text" name="username" placeholder="Username" th:field="*{username}" />
+            <input class="" type="email" name="email" placeholder="Email" th:field="*{email}" />
+            <input class="" type="password" name="password" placeholder="Password" th:field="*{password}" />
+            <input class="" type="password" name="confirmPassword" placeholder="Confirm the password" th:field="*{confirmPassword}" />
 
-            <div class="">
-                <input class="" type="password" name="password" placeholder="Password" th:field="*{password}" />
-            </div>
-
-            <div class="">
-                <input class="" type="password" name="confirmPassword" placeholder="Confirm the password" th:field="*{confirmPassword}" />
-            </div>
-
-<%--            <div>--%>
-<%--                ${Error}--%>
-<%--            </div>--%>
-
-            <div>
-                <button class="">
-                    Create
-                </button>
-            </div>
-
-            <div>
-                <a class="" href="${pageContext.request.contextPath}/login">
-                    Login
-                </a>
-            </div>
-
+            <input type="submit" value="Создать">
+            <footer class="clearfix">
+                <p><span class="info">?</span><a href="#">Забыли пароль?</a></p>
+                <p><span class="info">?</span><a href="${pageContext.request.contextPath}/login">Есть аккаунт?</a></p>
+            </footer>
         </form>
-    </div>
+    </fieldset>
+
 </div>
 
 </body>

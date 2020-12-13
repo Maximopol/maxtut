@@ -71,7 +71,7 @@
                 <div class="col-lg-6 mb-5 pt-3">
                     <div class="media tm-testimonial">
 
-                        <img class="mr-4 rounded-circle img-fluid" src="../image/testimonial-1.jpg" alt="Generic placeholder image">
+                        <img class="mr-4 rounded-circle img-fluid" src="../images/testimonial-1.jpg" alt="Generic placeholder image">
 
                         <p class="media-body pt-3 tm-testimonial-text">
                             ${comments.text}
@@ -102,18 +102,12 @@
                     <textarea id="w3review" name="w3review" rows="4" cols="38">
 
                     </textarea>
-
-
-                    <div class="buttonAddComment">
-                        <button name="addComment">
-                            Оставить
-                        </button>
-                    </div>
-                    <div class="buttonCancel">
-                        <button name="cancel">
-                            Отменить
-                        </button>
-                    </div>
+                    <button name="addComment">
+                        Оставить
+                    </button>
+                    <button name="cancel">
+                        Отменить
+                    </button>
                 </form>
             </div>
         </div>

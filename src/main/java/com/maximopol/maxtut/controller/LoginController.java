@@ -27,6 +27,8 @@ public class LoginController {
         }
         User user1 = userService.findUserByEmail(user.getEmail());
 
+        System.out.println(user1);
+
         if(user1==null){
             //такого пользователя нет
             return "aoth/login";
