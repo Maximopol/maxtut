@@ -43,7 +43,7 @@
                                             <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/account">Account</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/kek">Contact</a>
+                                            <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/contact">Contact</a>
                                         </li>
                                     </ul>
                                 </div>
