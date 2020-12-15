@@ -39,12 +39,29 @@
                                         <li class="nav-item active">
                                             <a class="nav-link tm-nav-link" href="#">News <span class="sr-only">(current)</span></a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/account">Account</a>
-                                        </li>
+
+                                        <c:choose>
+                                            <c:when test="${user.id==null}">
+                                                <li class="nav-item">
+                                                    <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+                                                </li>
+                                            </c:when>
+
+                                            <c:otherwise>
+                                                <li class="nav-item">
+                                                    <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/account">Account</a>
+                                                </li>
+                                            </c:otherwise>
+                                        </c:choose>
+
                                         <li class="nav-item">
                                             <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/contact">Contact</a>
                                         </li>
+                                        <c:if test="${user.id!=null}">
+                                            <li class="nav-item">
+                                                <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+                                            </li>
+                                        </c:if>
                                     </ul>
                                 </div>
                             </nav>
@@ -97,7 +114,7 @@
 <%--                        <c:out value="${comments.text}"/>--%>
                         <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
                             <div class="position-relative tm-thumbnail-container">
-                                <img src="../images/tn-01.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
+                                <img src="../image/tn-01.jpg" alt="Image" class="img-fluid tm-catalog-item-img">
                                 <a href="${pageContext.request.contextPath}/news/${news.id}" class="position-absolute tm-img-overlay">
                                     <i class="fas fa-play tm-overlay-icon"></i>
                                 </a>

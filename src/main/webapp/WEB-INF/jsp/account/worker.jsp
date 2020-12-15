@@ -36,15 +36,32 @@
                                 </button>
                                 <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
                                     <ul class="navbar-nav text-uppercase">
-                                        <li class="nav-item">
-                                            <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/">News</a>
+                                        <li class="nav-item active">
+                                            <a class="nav-link tm-nav-link" href="#">News <span class="sr-only">(current)</span></a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/account">Account</a>
-                                        </li>
+
+                                        <c:choose>
+                                            <c:when test="${user.id==null}">
+                                                <li class="nav-item">
+                                                    <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+                                                </li>
+                                            </c:when>
+
+                                            <c:otherwise>
+                                                <li class="nav-item">
+                                                    <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/account">Account</a>
+                                                </li>
+                                            </c:otherwise>
+                                        </c:choose>
+
                                         <li class="nav-item">
                                             <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/contact">Contact</a>
                                         </li>
+                                        <c:if test="${user.id!=null}">
+                                            <li class="nav-item">
+                                                <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+                                            </li>
+                                        </c:if>
                                     </ul>
                                 </div>
                             </nav>

@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 public class SingUpController {
@@ -16,11 +17,10 @@ public class SingUpController {
     private UserService userService;
 
     @RequestMapping(value="/registration",method = RequestMethod.GET)
-    public String registration(Model model) {
+    public String registration(Model model, SessionStatus sessionStatus) {
+        sessionStatus.setComplete();
         model.addAttribute("userForm", new User());
         return "aoth/reg";
-
-
     }
 
     @RequestMapping(value="/registration",method = RequestMethod.POST)
@@ -45,27 +45,6 @@ public class SingUpController {
         else{
             System.out.println("Такой есть");
         }
-
-//        if (!EmailValidator.IsValidEmail(client.getEmail())) {
-//            result = "У тебя почта странная\n";
-//        }
-//
-//        if (!client.getPassword().equals(client.getPasswordConfirm())) {
-//            result += "Пароли не совпадают";
-//        }
-//
-//        if (!result.equals("")) {
-//            logger.warn(result);
-//            model.addAttribute("passwordError", result);
-//            return "public/reg2";
-//        }
-//
-//        if (!userService.saveUser(client)) {
-//            logger.warn("Пользователь с такой почтой уже существует!");
-//            model.addAttribute("passwordError", "Пользователь с такой почтой уже существует!");
-//            return "public/reg2";
-//        }
-//        logger.info("New user with mail " + client.getEmail() + " added successfully");
         return "redirect:login";
     }
 }

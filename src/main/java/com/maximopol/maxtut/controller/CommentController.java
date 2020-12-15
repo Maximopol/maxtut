@@ -2,14 +2,13 @@ package com.maximopol.maxtut.controller;
 
 import com.maximopol.maxtut.entity.Comment;
 import com.maximopol.maxtut.entity.News;
+import com.maximopol.maxtut.entity.User;
 import com.maximopol.maxtut.service.CommentService;
 import com.maximopol.maxtut.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
+@SessionAttributes(value="user")
 public class CommentController {
     @Autowired
     private CommentService commentService;
@@ -42,7 +42,7 @@ public class CommentController {
     }
 
     @RequestMapping(value = "/node/{comments}", method = RequestMethod.POST, params = "addComment")
-    public String addNewComment(HttpServletRequest req, HttpServletResponse res, Model model, @PathVariable String comments) {
+    public String addNewComment(HttpServletRequest req, HttpServletResponse res, Model model, @PathVariable String comments,@ModelAttribute("user") User user) {
         String[] list = req.getParameterValues("w3review");
         StringBuffer string=new StringBuffer();
 
@@ -64,7 +64,7 @@ public class CommentController {
         comment.setDate(formater.format(cannes.getTime()));
         comment.setNews(new Long(comments));
         comment.setText(string.toString());
-        comment.setPerson(1L);
+        comment.setPerson(user.getId());
 
         System.out.println(comment);
         commentService.saveComment(comment);
@@ -75,5 +75,10 @@ public class CommentController {
     @RequestMapping(value = "/node/{comments}", method = RequestMethod.POST, params = "cancel")
     public String cancelAddNewComment(Model model, @PathVariable String comments) {
         return getComments(model, comments);
+    }
+
+    @ModelAttribute("user")
+    public User createUser() {
+        return new User();
     }
 }

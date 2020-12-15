@@ -5,12 +5,15 @@ import com.maximopol.maxtut.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.List;
 
 @Controller
+@SessionAttributes(value="user")
 public class AccountController {
     @Autowired
     private UserService userService;
@@ -28,8 +31,8 @@ public class AccountController {
     private NewsService newsService;
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
-    public String getAccount(Model model) {
-        User user = userService.findUserById(2L);
+    public String getAccount(Model model,@ModelAttribute("user") User user) {
+
         Employment employment = employmentService.findEmploymentByUser(user);
 
         List<Comment> commentList = commentService.getCommentsByPerson(user.getId());
@@ -54,5 +57,10 @@ public class AccountController {
             model.addAttribute("employment", employment);
             return "account/worker";
         }
+    }
+
+    @ModelAttribute("user")
+    public User createUser() {
+        return new User();
     }
 }
