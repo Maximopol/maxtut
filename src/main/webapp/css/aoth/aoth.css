@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 body {
-    background: url(../images/background.png) repeat;
+    background-color: #e3e3e3;
     color: #999;
     font: 100%/1.5em sans-serif;
     margin: 0;
@@ -127,8 +127,8 @@ input[type="submit"] { cursor: pointer; }
     width: 20px;
 }
 
-/* Стили бара vladmaxi, можно удалить */
-.vladmaxi-top{
+/* Стили бара header, можно удалить */
+.header-top{
     line-height: 24px;
     background: rgba(0, 0, 0, 0.08);
     text-transform: uppercase;
@@ -147,7 +147,7 @@ input[type="submit"] { cursor: pointer; }
     100%{top:0; opacity: 1;}
 }
 
-.vladmaxi-top a{
+.header-top a{
     padding: 0 10px;
     letter-spacing: 1px;
     color: #333;
@@ -155,13 +155,13 @@ input[type="submit"] { cursor: pointer; }
     display: block;
     float: left;
 }
-.vladmaxi-top a:hover{
+.header-top a:hover{
     background: #fff;
 }
-.vladmaxi-top span.right{
+.header-top span.right{
     float: right;
 }
-.vladmaxi-top span.right a{
+.header-top span.right a{
     float: left;
     display: block;
 }

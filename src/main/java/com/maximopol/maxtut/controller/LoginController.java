@@ -2,6 +2,8 @@ package com.maximopol.maxtut.controller;
 
 import com.maximopol.maxtut.entity.User;
 import com.maximopol.maxtut.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +17,17 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @SessionAttributes(value="user")
 public class LoginController {
+    private final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
     @Autowired
     private UserService userService;
+
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public ModelAndView login(){
+        logger.info("Open this page.");
          return  new ModelAndView("aoth/login","userForm", new User());
     }
+
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public ModelAndView getUser(@ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
         ModelAndView modelAndView= new ModelAndView();
@@ -35,6 +42,7 @@ public class LoginController {
         System.out.println(user1);
 
         if(user1==null){
+            model.addAttribute("errorMessage","Такого пользователя нет!");
             System.out.println("такого пользователя нет");
             modelAndView.setViewName("aoth/login");
             return modelAndView;
@@ -46,6 +54,7 @@ public class LoginController {
         }
         else {
             //неверный пароль
+            model.addAttribute("errorMessage","Неправильный пароль!");
             modelAndView.setViewName("aoth/login");
             return modelAndView;
         }

@@ -9,7 +9,7 @@
 
 <body>
 
-<div class="vladmaxi-top">
+<div class="header-top">
     <a href="${pageContext.request.contextPath}/" target="_blank">Главная MaxTuT</a>
     <span class="right">
         <a href="${pageContext.request.contextPath}/registration">
@@ -26,6 +26,7 @@
         <form method="post">
             <input class="" type="email" name="email" placeholder="Email" th:field="*{email}" />
             <input class="" type="password" name="password" placeholder="Password" th:field="*{password}" />
+            ${errorMessage}
             <input type="submit" value="ВОЙТИ">
             <footer class="clearfix">
                 <p><span class="info">?</span><a href="#">Забыли пароль?</a></p>
