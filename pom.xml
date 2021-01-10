@@ -64,9 +64,6 @@
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>mssql-jdbc</artifactId>
 			<version>8.2.2.jre8</version>
-<!--			<groupId>org.postgresql</groupId>-->
-<!--			<artifactId>postgresql</artifactId>-->
-<!--			<version>9.4.1208</version>-->
 		</dependency>
 
 		<dependency>
