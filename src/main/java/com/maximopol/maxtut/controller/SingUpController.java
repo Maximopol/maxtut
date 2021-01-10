@@ -5,6 +5,7 @@ import com.maximopol.maxtut.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +20,8 @@ public class SingUpController {
 
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
     @RequestMapping(value="/registration",method = RequestMethod.GET)
     public String registration(Model model, SessionStatus sessionStatus) {
         logger.info("Open this page.");
@@ -38,6 +40,7 @@ public class SingUpController {
         }
 
         logger.info(user.toString());
+        logger.info(passwordEncoder.encode(user.getPassword()));
         logger.info(user.getConfirmPassword());
         User user1 =userService.findUserByEmailOrUsername(user.getEmail(),user.getUsername());
 

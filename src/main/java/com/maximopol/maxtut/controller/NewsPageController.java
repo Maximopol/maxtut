@@ -28,7 +28,6 @@ public class NewsPageController {
 
         System.out.println("Id новости:"+news);
         News news1= newsService.findNewsById(new Long(news));
-
         news1.setMyFile(filekService.findFilekById(news1.getFilek()));
         model.addObject("news",news1);
         model.setViewName("news/news");

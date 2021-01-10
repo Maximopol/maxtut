@@ -1,10 +1,15 @@
 package com.maximopol.maxtut.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
-public class User {
+public class User implements UserDetails {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,14 +18,17 @@ public class User {
     @Column(name = "Email")
     private String email;
 
-    @Column(name = "Password")
+    @Column(name = "Username")
     private String username;
 
-    @Column(name = "Username")
+    @Column(name = "Password")
     private String password;
 
     @Transient
     private String confirmPassword;
+
+    @Transient
+    private Set<Role> roles;
 
     public User() {
 
@@ -46,8 +54,33 @@ public class User {
         return username;
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return getRoles();
     }
 
     public String getPassword() {
@@ -94,5 +127,13 @@ public class User {
         result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
         result = 31 * result + (getUsername() != null ? getUsername().hashCode() : 0);
         return result;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

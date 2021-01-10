@@ -4,6 +4,8 @@ import com.maximopol.maxtut.comporator.users.UserEmailComparator;
 import com.maximopol.maxtut.entity.User;
 import com.maximopol.maxtut.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,8 +14,10 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-//    @Autowired
+    //    @Autowired
 //    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public void printAllUser() {
         List<User> list = userRepository.findAll();
@@ -26,10 +30,11 @@ public class UserService {
         return userRepository.findUserById(id);
     }
 
-    public User findUserByEmail(String email){
+    public User findUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
     }
-    public User findUserByEmailOrUsername(String email, String username){
+
+    public User findUserByEmailOrUsername(String email, String username) {
         return userRepository.findUserByEmailOrUsername(email, username);
     }
 
@@ -44,6 +49,7 @@ public class UserService {
         System.out.println(user.getConfirmPassword());
         System.out.println("==========================");
         if (user1 == null) {
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             userRepository.save(user);
             status = true;
         }

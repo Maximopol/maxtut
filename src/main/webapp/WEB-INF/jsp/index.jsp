@@ -72,10 +72,10 @@
         </div>
         <div class="tm-welcome-container text-center text-white">
             <div class="tm-welcome-container-inner">
-                <p class="tm-welcome-text mb-1 text-white">Video Catalog is brought to you by TemplateMo.</p>
-                <p class="tm-welcome-text mb-5 text-white">This is a full-width video banner.</p>
+                <p class="tm-welcome-text mb-1 text-white">Привет. Это мой учебный проект.</p>
+                <p class="tm-welcome-text mb-5 text-white">Вы можете его оценить</p>
                 <a href="#content" class="btn tm-btn-animate tm-btn-cta tm-icon-down">
-                    <span>Discover</span>
+                    <span>Листать</span>
                 </a>
             </div>
         </div>

@@ -20,7 +20,7 @@
                     <div class="col-7 col-md-4">
                         <a href="${pageContext.request.contextPath}/" class="tm-bg-black text-center tm-logo-container">
                             <i class="fas fa-video tm-site-logo mb-3"></i>
-                            <h1 class="tm-site-name">Video Catalog</h1>
+                            <h1 class="tm-site-name">MaxTuT</h1>
                         </a>
                     </div>
                     <div class="col-5 col-md-8 ml-auto mr-0">
@@ -37,7 +37,7 @@
                                 <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
                                     <ul class="navbar-nav text-uppercase">
                                         <li class="nav-item active">
-                                            <a class="nav-link tm-nav-link" href="#">News <span class="sr-only">(current)</span></a>
+                                            <a class="nav-link tm-nav-link" href="${pageContext.request.contextPath}/">News</a>
                                         </li>
 
                                         <c:choose>

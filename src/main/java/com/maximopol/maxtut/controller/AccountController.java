@@ -3,6 +3,9 @@ package com.maximopol.maxtut.controller;
 import com.maximopol.maxtut.entity.*;
 import com.maximopol.maxtut.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,7 +34,14 @@ public class AccountController {
     private NewsService newsService;
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('USER')")
     public String getAccount(Model model,@ModelAttribute("user") User user) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(auth.getPrincipal());
+        System.out.println(auth);
+
+        user=(User)auth.getPrincipal();
+
 
         Employment employment = employmentService.findEmploymentByUser(user);
 
