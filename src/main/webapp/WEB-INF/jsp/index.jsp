@@ -191,7 +191,7 @@
                 <div class="col-12">
                     <p class="text-right">Copyright&copy;2020 MaxTuT
 
-                        - Designed by <a href="https://templatemo.com" rel="nofollow" target="_parent">TemplateMo</a></p>
+                        - Designed by <a href="https://templatemo.com" rel="nofollow" target="_parent">TemplateMo kek)))</a></p>
                 </div>
             </footer>
         </div> <!-- tm-content-container -->
