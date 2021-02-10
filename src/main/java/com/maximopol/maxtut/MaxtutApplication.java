@@ -7,9 +7,9 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @EnableEncryptableProperties
-@PropertySource("classpath:database.properties")
 public class MaxtutApplication {
 	public static void main(String[] args) {
+		System.out.println(System.getenv("JDBC_DATABASE_PASSWORD"));
 		SpringApplication.run(MaxtutApplication.class, args);
 	}
 }
