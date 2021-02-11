@@ -20,8 +20,12 @@ public class SingUpController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
+
+    public SingUpController(BCryptPasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
+
     @RequestMapping(value="/registration",method = RequestMethod.GET)
     public String registration(Model model, SessionStatus sessionStatus) {
         logger.info("Open this page.");

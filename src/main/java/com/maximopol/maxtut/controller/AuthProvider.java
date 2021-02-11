@@ -26,8 +26,11 @@ public class AuthProvider implements AuthenticationProvider {
     private final Logger logger = LoggerFactory.getLogger(AuthProvider.class);
     @Autowired
     private UserService userService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
+    public AuthProvider(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
