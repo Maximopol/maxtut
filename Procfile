@@ -1,1 +1,1 @@
-web: java -jar target/maxtut-0.0.1-SNAPSHOT.war
+web: java -Xmx500m -jar target/maxtut-0.0.1-SNAPSHOT.war 
