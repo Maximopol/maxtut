@@ -1,7 +1,6 @@
 package com.maximopol.maxtut.service;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
