@@ -1,8 +1,10 @@
 package com.maximopol.maxtut.controller;
 
 import com.maximopol.maxtut.entity.User;
+import com.maximopol.maxtut.service.PropertyServiceSecondDataBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,12 +15,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 
 @Controller
 @SessionAttributes(value="user")
 public class ContactController {
     private final Logger logger = LoggerFactory.getLogger(ContactController.class);
+
+    @Autowired
+    PropertyServiceSecondDataBase propertyServiceSecondDataBase;
 
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public ModelAndView getContactView() {
@@ -28,16 +37,17 @@ public class ContactController {
 
     @RequestMapping(value = "/contact", method = RequestMethod.POST)
     public ModelAndView sentQuestionToMyEmail(HttpServletRequest req, HttpServletResponse res, Model model, @ModelAttribute("user") User user) {
-        String name = req.getParameterValues("name")[0],
-                email = req.getParameterValues("email")[0],
-                text = req.getParameterValues("message")[0];
+        String email = req.getParameterValues("email")[0], text = req.getParameterValues("message")[0];
 
-        logger.info(user.toString());
-        logger.info(name);
-        logger.info(email);
-        logger.info(text);
-
-
+        String SQL = "INSERT INTO public.\"questions \" (email,text) VALUES(?,?)";
+        try (Connection dbConnection = DriverManager.getConnection(propertyServiceSecondDataBase.getUrl(), propertyServiceSecondDataBase.getUsername(), propertyServiceSecondDataBase.getPassword()); PreparedStatement statement = dbConnection.prepareStatement(SQL);) {
+            statement.setString(1, email);
+            statement.setString(2, text);
+            statement.addBatch();
+            statement.executeBatch();
+        } catch (SQLException e) {
+            logger.error(e.getSQLState());
+        }
         return new ModelAndView("contact");
     }
 
