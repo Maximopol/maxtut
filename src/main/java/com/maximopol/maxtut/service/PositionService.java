@@ -9,11 +9,8 @@ import java.util.List;
 
 @Service
 public class PositionService {
-    private final PositionRepository positionRepository;
-
-    public PositionService(PositionRepository positionRepository) {
-        this.positionRepository = positionRepository;
-    }
+    @Autowired
+    private PositionRepository positionRepository;
 
     public void printAllPosition(){
         List<Position> list= positionRepository.findAll();

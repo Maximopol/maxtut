@@ -10,11 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class Kek2Controller {
-    private final UserService userService;
-
-    public Kek2Controller(UserService userService) {
-        this.userService = userService;
-    }
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value="/kek2",method = RequestMethod.GET)
     public String viewKek2() {

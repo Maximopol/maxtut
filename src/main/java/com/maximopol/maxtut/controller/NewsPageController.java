@@ -14,18 +14,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @SessionAttributes(value="user")
 public class NewsPageController {
-    private final NewsService newsService;
-    private final EmploymentService employmentService;
-    private final FilekService filekService;
-    private final UserService userService;
-
-    public NewsPageController(NewsService newsService, EmploymentService employmentService, FilekService filekService, UserService userService) {
-        this.newsService = newsService;
-        this.employmentService = employmentService;
-        this.filekService = filekService;
-        this.userService = userService;
-    }
-
+    @Autowired
+    private NewsService newsService;
+    @Autowired
+    private EmploymentService employmentService;
+    @Autowired
+    private FilekService filekService;
+    @Autowired
+    private UserService userService;
     @RequestMapping(value = "/news/{news}", method = RequestMethod.GET)
     public ModelAndView getComments(  @PathVariable String news){
         ModelAndView model= new ModelAndView();

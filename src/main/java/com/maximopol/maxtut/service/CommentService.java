@@ -12,13 +12,10 @@ import java.util.List;
 
 @Service
 public class CommentService {
-    private final CommentRepository commentRepository;
-    private final UserService userService;
-
-    public CommentService(CommentRepository commentRepository, UserService userService) {
-        this.commentRepository = commentRepository;
-        this.userService = userService;
-    }
+    @Autowired
+    private CommentRepository commentRepository;
+    @Autowired
+    private UserService userService;
 
     public void printAllComment() {
         List<Comment> list = commentRepository.findAll();

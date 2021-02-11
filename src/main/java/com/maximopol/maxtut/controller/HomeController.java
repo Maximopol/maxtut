@@ -17,11 +17,8 @@ import java.util.List;
 @Controller
 @SessionAttributes(value="user")
 public class HomeController {
-    private final NewsService newsService;
-
-    public HomeController(NewsService newsService) {
-        this.newsService = newsService;
-    }
+    @Autowired
+    private NewsService newsService;
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public ModelAndView getIndex(@ModelAttribute("user") User user){

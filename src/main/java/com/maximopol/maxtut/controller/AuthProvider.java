@@ -24,13 +24,10 @@ import java.util.Set;
 @Component
 public class AuthProvider implements AuthenticationProvider {
     private final Logger logger = LoggerFactory.getLogger(AuthProvider.class);
-    private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
-
-    public AuthProvider(PasswordEncoder passwordEncoder, UserService userService) {
-        this.passwordEncoder = passwordEncoder;
-        this.userService = userService;
-    }
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
