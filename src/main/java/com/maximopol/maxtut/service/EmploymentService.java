@@ -10,14 +10,17 @@ import java.util.List;
 
 @Service
 public class EmploymentService {
-    @Autowired
-    private EmploymentRepository employmentRepository;
+    private final EmploymentRepository employmentRepository;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private PositionService positionService;
+    private final PositionService positionService;
+
+    public EmploymentService(EmploymentRepository employmentRepository, UserService userService, PositionService positionService) {
+        this.employmentRepository = employmentRepository;
+        this.userService = userService;
+        this.positionService = positionService;
+    }
 
     public void printAllEmployments() {
         List<Employment> list = employmentRepository.findAll();

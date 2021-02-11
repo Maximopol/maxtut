@@ -9,8 +9,11 @@ import java.util.List;
 
 @Service
 public class FilekService {
-    @Autowired
-    private FilekRepository filekRepository;
+    private final FilekRepository filekRepository;
+
+    public FilekService(FilekRepository filekRepository) {
+        this.filekRepository = filekRepository;
+    }
 
     public void printAllFilek() {
         List<Filek> list = filekRepository.findAll();

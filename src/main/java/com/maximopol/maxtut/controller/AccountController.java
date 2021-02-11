@@ -18,20 +18,23 @@ import java.util.List;
 @Controller
 @SessionAttributes(value="user")
 public class AccountController {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private EmploymentService employmentService;
+    private final EmploymentService employmentService;
 
-    @Autowired
-    private PositionService positionService;
+    private final PositionService positionService;
 
-    @Autowired
-    private CommentService commentService;
+    private final CommentService commentService;
 
-    @Autowired
-    private NewsService newsService;
+    private final NewsService newsService;
+
+    public AccountController(UserService userService, EmploymentService employmentService, PositionService positionService, CommentService commentService, NewsService newsService) {
+        this.userService = userService;
+        this.employmentService = employmentService;
+        this.positionService = positionService;
+        this.commentService = commentService;
+        this.newsService = newsService;
+    }
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     @PreAuthorize("hasRole('USER')")

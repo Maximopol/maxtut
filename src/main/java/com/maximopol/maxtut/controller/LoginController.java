@@ -19,8 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
     private final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public LoginController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public ModelAndView login(){

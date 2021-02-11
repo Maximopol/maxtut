@@ -18,12 +18,12 @@ import org.springframework.web.bind.support.SessionStatus;
 public class SingUpController {
     private final Logger logger = LoggerFactory.getLogger(SingUpController.class);
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public SingUpController(BCryptPasswordEncoder passwordEncoder) {
+    public SingUpController(BCryptPasswordEncoder passwordEncoder, UserService userService) {
         this.passwordEncoder = passwordEncoder;
+        this.userService = userService;
     }
 
     @RequestMapping(value="/registration",method = RequestMethod.GET)

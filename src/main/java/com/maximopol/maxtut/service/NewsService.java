@@ -10,8 +10,11 @@ import java.util.List;
 
 @Service
 public class NewsService {
-    @Autowired
-    private NewsRepository newsRepository;
+    private final NewsRepository newsRepository;
+
+    public NewsService(NewsRepository newsRepository) {
+        this.newsRepository = newsRepository;
+    }
 
     public void printAllPosition(){
         List<News> list= newsRepository.findAll();

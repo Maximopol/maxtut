@@ -13,23 +13,26 @@ import java.util.Arrays;
 
 @Controller
 public class KekController {
-    @Autowired
-    private PositionService positionService;
+    private final PositionService positionService;
 
-    @Autowired
-    private CommentService commentService;
+    private final CommentService commentService;
 
-    @Autowired
-    private EmploymentService employmentService;
+    private final EmploymentService employmentService;
 
-    @Autowired
-    private FilekService filekService;
+    private final FilekService filekService;
 
-    @Autowired
-    private NewsService newsService;
+    private final NewsService newsService;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public KekController(PositionService positionService, CommentService commentService, EmploymentService employmentService, FilekService filekService, NewsService newsService, UserService userService) {
+        this.positionService = positionService;
+        this.commentService = commentService;
+        this.employmentService = employmentService;
+        this.filekService = filekService;
+        this.newsService = newsService;
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "/kek", method = RequestMethod.GET)
     public String viewKek(Model map,@RequestParam(value = "inquiry", required = false) String checkboxValue) {

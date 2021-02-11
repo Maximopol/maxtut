@@ -26,8 +26,11 @@ import java.sql.SQLException;
 public class ContactController {
     private final Logger logger = LoggerFactory.getLogger(ContactController.class);
 
-    @Autowired
-    PropertyServiceSecondDataBase propertyServiceSecondDataBase;
+    final PropertyServiceSecondDataBase propertyServiceSecondDataBase;
+
+    public ContactController(PropertyServiceSecondDataBase propertyServiceSecondDataBase) {
+        this.propertyServiceSecondDataBase = propertyServiceSecondDataBase;
+    }
 
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public ModelAndView getContactView() {
