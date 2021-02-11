@@ -1,7 +1,7 @@
 package com.maximopol.maxtut.controller;
 
 import com.maximopol.maxtut.entity.User;
-import com.maximopol.maxtut.service.PropertyServiceSecondDataBase;
+//import com.maximopol.maxtut.service.PropertyServiceSecondDataBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +26,8 @@ import java.sql.SQLException;
 public class ContactController {
     private final Logger logger = LoggerFactory.getLogger(ContactController.class);
 
-    @Autowired
-    PropertyServiceSecondDataBase propertyServiceSecondDataBase;
+//    @Autowired
+//    PropertyServiceSecondDataBase propertyServiceSecondDataBase;
 
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public ModelAndView getContactView() {
