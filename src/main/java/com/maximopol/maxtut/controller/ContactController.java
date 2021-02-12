@@ -27,8 +27,7 @@ import java.sql.SQLException;
 public class ContactController {
     private final Logger logger = LoggerFactory.getLogger(ContactController.class);
 
-    final
-    PropertyServiceSecondDataBase propertyServiceSecondDataBase;
+    final PropertyServiceSecondDataBase propertyServiceSecondDataBase;
 
     public ContactController(PropertyServiceSecondDataBase propertyServiceSecondDataBase) {
         this.propertyServiceSecondDataBase = propertyServiceSecondDataBase;
