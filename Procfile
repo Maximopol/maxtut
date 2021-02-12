@@ -1,1 +1,1 @@
-web: java -Xmx300m -Xss512k -XX:CICompilerCount=2 -jar target/maxtut-0.0.1-SNAPSHOT.war
+web: java -jar target/maxtut-0.0.1-SNAPSHOT.war
