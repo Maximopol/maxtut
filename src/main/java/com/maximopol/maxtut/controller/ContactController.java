@@ -48,6 +48,7 @@ public class ContactController {
 //        } catch (SQLException e) {
 //            logger.error(e.getSQLState());
 //        }
+
         return new ModelAndView("contact");
     }
 
