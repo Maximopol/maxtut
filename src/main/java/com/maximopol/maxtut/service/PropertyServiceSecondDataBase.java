@@ -8,9 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class PropertyServiceSecondDataBase {
     private final Logger logger = LoggerFactory.getLogger(PropertyServiceSecondDataBase.class);
-    public PropertyServiceSecondDataBase(){
+
+    public PropertyServiceSecondDataBase() {
         logger.info("I am cat");
+        logger.info(username);
+        logger.info(password);
     }
+
     @Value("${questions.username}")
     private String username;
     @Value("${questions.password}")
