@@ -39,15 +39,15 @@ public class ContactController {
     public ModelAndView sentQuestionToMyEmail(HttpServletRequest req, HttpServletResponse res, Model model, @ModelAttribute("user") User user) {
         String email = req.getParameterValues("email")[0], text = req.getParameterValues("message")[0];
 
-        String SQL = "INSERT INTO public.\"questions \" (email,text) VALUES(?,?)";
-        try (Connection dbConnection = DriverManager.getConnection("propertyServiceSecondDataBase.getUrl()", "propertyServiceSecondDataBase.getUsername()", "propertyServiceSecondDataBase.getPassword()"); PreparedStatement statement = dbConnection.prepareStatement(SQL);) {
-            statement.setString(1, email);
-            statement.setString(2, text);
-            statement.addBatch();
-            statement.executeBatch();
-        } catch (SQLException e) {
-            logger.error(e.getSQLState());
-        }
+//        String SQL = "INSERT INTO public.\"questions \" (email,text) VALUES(?,?)";
+//        try (Connection dbConnection = DriverManager.getConnection("propertyServiceSecondDataBase.getUrl()", "propertyServiceSecondDataBase.getUsername()", "propertyServiceSecondDataBase.getPassword()"); PreparedStatement statement = dbConnection.prepareStatement(SQL);) {
+//            statement.setString(1, email);
+//            statement.setString(2, text);
+//            statement.addBatch();
+//            statement.executeBatch();
+//        } catch (SQLException e) {
+//            logger.error(e.getSQLState());
+//        }
         return new ModelAndView("contact");
     }
 
