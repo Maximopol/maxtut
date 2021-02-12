@@ -14,11 +14,8 @@ import java.util.List;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-    final BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    public UserService(BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public void printAllUser() {
         List<User> list = userRepository.findAll();
