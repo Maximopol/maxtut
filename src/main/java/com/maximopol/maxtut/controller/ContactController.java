@@ -1,10 +1,8 @@
 package com.maximopol.maxtut.controller;
 
 import com.maximopol.maxtut.entity.User;
-//import com.maximopol.maxtut.service.PropertyServiceSecondDataBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,10 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+
+//import com.maximopol.maxtut.service.PropertyServiceSecondDataBase;
 
 
 @Controller
