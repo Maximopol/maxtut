@@ -46,13 +46,16 @@ public class ContactController {
 
        // String SQL = "INSERT INTO public.\"questions \" (email,text) VALUES(?,?)";
         String SQL = "INSERT INTO `Questions` ( `Email`, `Text`) VALUES(?,?)";
-        try (Connection dbConnection = DriverManager.getConnection(propertyServiceSecondDataBase.getUrl(), propertyServiceSecondDataBase.getUsername(), propertyServiceSecondDataBase.getPassword()); PreparedStatement statement = dbConnection.prepareStatement(SQL);) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection dbConnection = DriverManager.getConnection(propertyServiceSecondDataBase.getUrl(), propertyServiceSecondDataBase.getUsername(), propertyServiceSecondDataBase.getPassword());
+            PreparedStatement statement = dbConnection.prepareStatement(SQL);
             statement.setString(1, email);
             statement.setString(2, text);
             statement.addBatch();
             statement.executeBatch();
             System.out.println("123123");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             logger.error(e.toString());
         }
 
