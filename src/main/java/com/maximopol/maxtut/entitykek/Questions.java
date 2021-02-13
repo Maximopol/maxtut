@@ -3,7 +3,7 @@ package com.maximopol.maxtut.entitykek;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Questions")
+@Table(name = "Question")
 public class Questions {
     @Id
     @Column(name = "ID")
