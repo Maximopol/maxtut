@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PropertyServiceSecondDataBase {
-    @Value("${questions.datasource.username}")
+public class PropertyServicePrimaryDataBase {
+    @Value("${spring.datasource.username}")
     private String username;
-    @Value("${questions.datasource.password}")
+    @Value("${spring.datasource.password}")
     private String password;
-    @Value("${questions.datasource.url}")
+    @Value("${spring.datasource.url}")
     private String url;
-    @Value("${questions.datasource.driverClassName}")
+    @Value("${spring.datasource.driverClassName}")
     private String driverClassName;
     public String getUsername() {
         return username;

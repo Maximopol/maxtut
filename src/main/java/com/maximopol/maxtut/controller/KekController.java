@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Arrays;
-
 @Controller
 public class KekController {
     @Autowired
@@ -31,9 +29,13 @@ public class KekController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private  QuestionsService questionsService;
+
     @RequestMapping(value = "/kek", method = RequestMethod.GET)
     public String viewKek(Model map,@RequestParam(value = "inquiry", required = false) String checkboxValue) {
-
+        questionsService.printAllQuestions();
+        System.out.println("\n");
         positionService.printAllPosition();
         System.out.println("\n");
         commentService.printAllComment();
