@@ -25,14 +25,47 @@ html {
     -ms-overflow-style: scrollbar;
     background-color: #1d1d1d;
 }
-
 .container {
     max-width: 1200px;
     min-width: 390px;
     min-height: 300px;
     width: 390px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 10%;
+    margin-right: 100px;
+    /*// margin-left: auto;*/
+    margin-top: 100px;
     background-color: whitesmoke;
+}
+@media(max-width:1368px) {
+    .container{
+        min-width: 730px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 20%;
+    }
+    .letter{
+        font-size: 52px;
+    }
+    .numberRed{
+        font-size: 300px;
+    }
+    .numberGreen{
+        font-size: 300px;
+    }
+}
+@media(max-width:380px) {
+    .container{
+        min-width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 10%;
+    }
+    .letter{
+        font-size: 32px;
+    }
+    .numberRed{
+        font-size: 220px;
+    }
+    .numberGreen{
+        font-size: 220px;
+    }
 }
