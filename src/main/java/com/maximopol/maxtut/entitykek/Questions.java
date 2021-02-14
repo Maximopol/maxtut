@@ -3,15 +3,15 @@ package com.maximopol.maxtut.entitykek;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Question")
+@Table(name = "question")
 public class Questions {
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "Email")
+    @Column(name = "email")
     private String email;
-    @Column(name = "Text")
+    @Column(name = "text")
     private String text;
 
     public Questions() {
