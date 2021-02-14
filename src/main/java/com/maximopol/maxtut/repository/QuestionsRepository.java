@@ -1,6 +1,6 @@
-package com.maximopol.maxtut.repositorykek;
+package com.maximopol.maxtut.repository;
 
-import com.maximopol.maxtut.entitykek.Questions;
+import com.maximopol.maxtut.entity.Questions;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

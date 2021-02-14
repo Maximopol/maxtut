@@ -1,4 +1,4 @@
-package com.maximopol.maxtut.entitykek;
+package com.maximopol.maxtut.entity;
 
 import javax.persistence.*;
 

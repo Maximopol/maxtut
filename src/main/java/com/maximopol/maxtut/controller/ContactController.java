@@ -1,7 +1,7 @@
 package com.maximopol.maxtut.controller;
 
+import com.maximopol.maxtut.entity.Questions;
 import com.maximopol.maxtut.entity.User;
-import com.maximopol.maxtut.entitykek.Questions;
 import com.maximopol.maxtut.service.PropertyServiceSecondDataBase;
 import com.maximopol.maxtut.service.QuestionsService;
 import org.slf4j.Logger;
