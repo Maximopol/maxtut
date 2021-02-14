@@ -15,8 +15,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 @Configuration
 @EnableJpaRepositories(
@@ -34,7 +32,7 @@ public class DataPrimarySourceConfiguration {
     }
     @Bean
     @Primary
-    public LocalContainerEntityManagerFactoryBean primaryEntityManager() throws URISyntaxException {
+    public LocalContainerEntityManagerFactoryBean primaryEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(primaryDataSource());
         em.setPackagesToScan("com.maximopol.maxtut.entity");
@@ -48,23 +46,17 @@ public class DataPrimarySourceConfiguration {
 
     @Bean
     @Primary
-    public DataSource primaryDataSource() throws URISyntaxException {
+    public DataSource primaryDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        URI dbUri = new URI(propertyServiceSecondDataBase.getUrl());
-        String username = dbUri.getUserInfo().split(":")[0];
-        String password = dbUri.getUserInfo().split(":")[1];
-        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath()+"?sslmode=require";
-
-        dataSource.setUrl(dbUrl);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-
+        dataSource.setDriverClassName(propertyServiceSecondDataBase.getDriverClassName());
+        dataSource.setUrl(propertyServiceSecondDataBase.getUrl());
+        dataSource.setUsername(propertyServiceSecondDataBase.getUsername());
+        dataSource.setPassword(propertyServiceSecondDataBase.getPassword());
         return dataSource;
     }
     @Primary
     @Bean
-    public PlatformTransactionManager primaryTransactionManager() throws URISyntaxException {
+    public PlatformTransactionManager primaryTransactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(primaryEntityManager().getObject());
         return transactionManager;
