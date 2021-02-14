@@ -14,6 +14,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 @Configuration
 @EnableJpaRepositories(
@@ -31,16 +33,23 @@ public class DataSourceConfiguration {
     }
 
     @Bean
-    public DataSource secondDataSource() {
+    public DataSource secondDataSource() throws URISyntaxException {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(propertyServiceSecondDataBase.getDriverClassName());
-        dataSource.setUrl(propertyServiceSecondDataBase.getUrl());
-        dataSource.setUsername(propertyServiceSecondDataBase.getUsername());
-        dataSource.setPassword(propertyServiceSecondDataBase.getPassword());
+        dataSource.setDriverClassName("org.postgresql.Driver");
+        URI dbUri = new URI(propertyServiceSecondDataBase.getUrl());
+
+        String username = dbUri.getUserInfo().split(":")[0];
+        String password = dbUri.getUserInfo().split(":")[1];
+        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath()+"?sslmode=require";
+
+        dataSource.setUrl(dbUrl);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+
         return dataSource;
     }
     @Bean
-    public LocalContainerEntityManagerFactoryBean secondEntityManager() {
+    public LocalContainerEntityManagerFactoryBean secondEntityManager() throws URISyntaxException {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(secondDataSource());
         em.setPackagesToScan("com.maximopol.maxtut.entitykek");
@@ -53,7 +62,7 @@ public class DataSourceConfiguration {
     }
 
     @Bean
-    public PlatformTransactionManager secondTransactionManager() {
+    public PlatformTransactionManager secondTransactionManager() throws URISyntaxException {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(secondEntityManager().getObject());
         return transactionManager;
