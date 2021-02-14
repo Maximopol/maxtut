@@ -2,7 +2,6 @@ package com.maximopol.maxtut.controller;
 
 import com.maximopol.maxtut.entity.Questions;
 import com.maximopol.maxtut.entity.User;
-import com.maximopol.maxtut.service.PropertyServiceSecondDataBase;
 import com.maximopol.maxtut.service.QuestionsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,11 +26,11 @@ public class ContactController {
     private final Logger logger = LoggerFactory.getLogger(ContactController.class);
     @Autowired
     QuestionsService questionsService;
-    final PropertyServiceSecondDataBase propertyServiceSecondDataBase;
-
-    public ContactController(PropertyServiceSecondDataBase propertyServiceSecondDataBase) {
-        this.propertyServiceSecondDataBase = propertyServiceSecondDataBase;
-    }
+//    final PropertyServiceSecondDataBase propertyServiceSecondDataBase;
+//
+//    public ContactController(PropertyServiceSecondDataBase propertyServiceSecondDataBase) {
+//        this.propertyServiceSecondDataBase = propertyServiceSecondDataBase;
+//    }
 
     @RequestMapping(value = "/contact", method = RequestMethod.GET)
     public ModelAndView getContactView() {
