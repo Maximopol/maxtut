@@ -8,11 +8,13 @@
     color:red;
     font-size: 170px;
     font-family: Tahoma, serif;
+    text-align:  center;
 }
 .numberGreen{
     color:green;
     font-size: 170px;
     font-family: Tahoma, serif;
+    text-align:  center;
 }
 
 body {
